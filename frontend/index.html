@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GG go next</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div id="login-page" class="page">
+      <h2>Login</h2>
+      <form id="login-form">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="#" id="register-link">Register</a></p>
+    </div>
+
+    <div id="register-page" class="page">
+      <h2>Register</h2>
+      <form id="register-form">
+        <input type="text" id="new-username" placeholder="Username" required>
+        <input type="email" id="new-email" placeholder="Email" required>
+        <input type="password" id="new-password" placeholder="Password" required>
+        <button type="submit">Register</button>
+      </form>
+      <p>Already have an account? <a href="#" id="login-link">Login</a></p>
+    </div>
+
+    <div id="forum-page" class="page">
+      <h2>Welcome to GGgonext</h2>
+      <div id="forum-list"></div>
+      <form id="add-forum-form">
+        <input type="text" id="forum-name" placeholder="Forum Name" required>
+        <button type="submit">Add Game</button>
+      </form>
+    </div>
+
+    <div id="posts-page" class="page">
+      <h2 id="forum-title"></h2>
+      <button id="back-button">Go Back to Forum Page</button>
+      <ul id="post-list"></ul>
+      <form id="add-post-form">
+        <textarea id="post-content" placeholder="Write your post here" required></textarea>
+        <button type="submit">Create Post</button>
+      </form>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

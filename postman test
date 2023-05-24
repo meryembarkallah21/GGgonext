@@ -1,0 +1,134 @@
+Certainly! Here's the complete set of examples for each API call, including the missing ones, all in one block:
+
+```
+# API Documentation
+
+This documentation provides an overview of the available API methods based on the provided `typeDefs`.
+
+## Getting Started
+
+To interact with the API, you can use an HTTP client like Postman. Make sure you have the server running and replace the endpoint URL in the examples below with the actual URL of your server.
+
+## Additional Methods
+
+### getUser
+
+Retrieve a user by ID.
+
+- Method: POST
+- Endpoint: `http://localhost:5000/graphql`
+- Body:
+```json
+{
+  "query": "query getUser($id: ID) {\n  getUser(id: $id) {\n    id\n    username\n    email\n    posts {\n      id\n      content\n      user {\n        id\n        username\n      }\n      forum {\n        id\n        name\n      }\n    }\n  }\n}",
+  "variables": {
+    "id": "USER_ID_HERE"
+  }
+}
+```
+Replace `"USER_ID_HERE"` with the actual ID of the user you want to retrieve.
+
+### getForum
+
+Retrieve a forum by ID.
+
+- Method: POST
+- Endpoint: `http://localhost:5000/graphql`
+- Body:
+```json
+{
+  "query": "query getForum($id: ID!) {\n  getForum(id: $id) {\n    id\n    name\n    posts {\n      id\n      content\n      user {\n        id\n        username\n      }\n      forum {\n        id\n        name\n      }\n    }\n  }\n}",
+  "variables": {
+    "id": "FORUM_ID_HERE"
+  }
+}
+```
+Replace `"FORUM_ID_HERE"` with the actual ID of the forum you want to retrieve.
+
+### getPosts
+
+Retrieve all posts.
+
+- Method: POST
+- Endpoint: `http://localhost:5000/graphql`
+- Body:
+```json
+{
+  "query": "query {\n  getPosts {\n    id\n    content\n    user {\n      id\n      username\n    }\n    forum {\n      id\n      name\n    }\n  }\n}"
+}
+```
+
+### getForums
+
+Retrieve all forums.
+
+- Method: POST
+- Endpoint: `http://localhost:5000/graphql`
+- Body:
+```json
+{
+  "query": "query {\n  getForums {\n    id\n    name\n    posts {\n      id\n      content\n      user {\n        id\n        username\n      }\n      forum {\n        id\n        name\n      }\n    }\n  }\n}"
+}
+```
+
+### createForum
+
+Create a new forum.
+
+- Method: POST
+- Endpoint: `http://localhost:5000/graphql`
+- Body:
+```json
+{
+  "query": "mutation createForum($name: String!) {\n  createForum(name: $name) {\n    id\n    name\n  }\n}",
+  "variables": {
+    "name": "FORUM_NAME_HERE"
+  }
+}
+```
+Replace `"FORUM_NAME_HERE"` with the actual name of the forum you want to create.
+
+### createPost
+
+Create a new post.
+
+- Method: POST
+- Endpoint: `http://localhost:5000/graphql`
+- Body:
+```json
+{
+  "query": "mutation createPost($content: String!, $userId: ID!, $forumId: ID!) {\n  createPost(content: $content, userId: $userId, forumId: $forumId) {\n    id\n    content\n    user {\n      id\n      username\n      email\n    }\n    forum {\n      id\n      name\n    }\n  }\n}",
+  "variables": {
+
+
+    "content": "This is the content of the post.",
+    "userId": "USER_ID_HERE",
+    "forumId": "FORUM_ID_HERE"
+  }
+}
+```
+Replace `"USER_ID_HERE"` with the actual ID of the user creating the post and `"FORUM_ID_HERE"` with the actual ID of the forum where the post belongs.
+
+### login
+
+Authenticate a user by username and password.
+
+- Method: POST
+- Endpoint: `http://localhost:5000/graphql`
+- Body:
+```json
+{
+  "query": "mutation login($username: String!, $password: String!) {\n  login(username: $username, password: $password) {\n    id\n    username\n    email\n  }\n}",
+  "variables": {
+    "username": "USERNAME_HERE",
+    "password": "PASSWORD_HERE"
+  }
+}
+```
+Replace `"USERNAME_HERE"` with the actual username and `"PASSWORD_HERE"` with the actual password of the user you want to authenticate.
+
+Remember to replace the endpoint URL with your server's URL.
+
+```
+
+You can copy the above block into your `README.md` file and customize it further if needed.

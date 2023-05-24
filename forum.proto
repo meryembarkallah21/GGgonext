@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+message User {
+  string id = 1;
+  string username = 2;
+  string email = 3;
+  string password = 4;
+}
+
+message Post {
+  string id = 1;
+  string content = 2;
+  User user = 3;
+}
+
+message Forum {
+  string id = 1;
+  string name = 2;
+  repeated Post posts = 3;
+}
+
+message GetForumRequest {
+  string id = 1;
+}
+
+message GetForumResponse {
+  Forum forum = 1;
+}
+
+message GetForumsRequest {
+  // No fields required
+}
+
+message GetForumsResponse {
+  repeated Forum forums = 1;
+}
+
+message CreateForumRequest {
+  string name = 1;
+}
+
+message CreateForumResponse {
+  Forum forum = 1;
+}
+
+message Empty {} // Added the Empty message
+
+service ForumService {
+  rpc getForum(GetForumRequest) returns (GetForumResponse);
+  rpc getForums(GetForumsRequest) returns (GetForumsResponse);
+  rpc createForum(CreateForumRequest) returns (CreateForumResponse);
+}
